@@ -1,0 +1,353 @@
+.blog-section {
+  background-color: #f9fafb;
+  min-height: 100vh;
+  padding: 4rem 2rem;
+}
+
+.blog-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 2rem;
+}
+
+/* Left Blog Text */
+.blog-text {
+  flex: 1;
+  color: #111827;
+}
+
+.blog-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #000;
+  margin-bottom: 1rem;
+}
+
+.blog-description {
+  color: #4b5563;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  max-width: 90%;
+}
+
+/* Search */
+.search-bar {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.search-bar input {
+  flex: 1;
+  padding: 0.6rem 1rem;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+.search-bar button {
+  background-color: #149d92;
+  color: white;
+  font-weight: 600;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.search-bar button:hover {
+  background-color: #0f7f76;
+}
+
+/* Search Results */
+.search-results {
+  margin-top: 1rem;
+}
+
+.search-item {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #e5e7eb;
+  color: #111827;
+}
+
+.no-result {
+  color: #9ca3af;
+  font-style: italic;
+}
+
+/* Quran Animation */
+.quran-animation {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.book-container {
+  position: relative;
+  width: 280px;
+  height: 220px;
+  transform-style: preserve-3d;
+  animation: openBook 10s infinite ease-in-out;
+  perspective: 2000px;
+}
+
+/* Covers */
+.cover {
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  background: #000;
+  border: 3px solid #d4af37;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: #d4af37;
+  font-family: 'Scheherazade New', serif;
+  font-size: 1.3rem;
+  backface-visibility: hidden;
+}
+
+.left-cover {
+  left: 0;
+  transform-origin: right;
+}
+
+.right-cover {
+  right: 0;
+  transform-origin: left;
+}
+
+.floral-design {
+  margin-top: 10px;
+  width: 70%;
+  height: 5px;
+  background: linear-gradient(90deg, transparent, #d4af37, transparent);
+  border-radius: 6px;
+}
+
+/* Pages */
+.page {
+  position: absolute;
+  width: 50%;
+  height: 96%;
+  top: 2%;
+  background: #fffef9;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+}
+
+.left-page {
+  left: 0;
+  transform-origin: right;
+}
+
+.right-page {
+  right: 0;
+  transform-origin: left;
+}
+
+.page-border {
+  padding: 10px;
+  border: 1px solid #e5e7eb;
+  height: 100%;
+}
+
+.verse {
+  font-family: 'Scheherazade New', serif;
+  direction: rtl;
+  text-align: right;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #000;
+  border-bottom: 1px solid #e5e7eb;
+  margin: 0.2rem 0;
+}
+
+/* Animation */
+@keyframes openBook {
+  0%, 10% {
+    transform: rotateY(0deg);
+  }
+  20%, 80% {
+    transform: rotateY(-40deg);
+  }
+  90%, 100% {
+    transform: rotateY(0deg);
+  }
+}
+
+.left-cover {
+  animation: openLeftCover 10s infinite ease-in-out;
+}
+
+.right-cover {
+  animation: openRightCover 10s infinite ease-in-out;
+}
+
+.left-page,
+.right-page {
+  animation: flipPages 10s infinite ease-in-out;
+}
+
+@keyframes openLeftCover {
+  0%, 10% { transform: rotateY(0deg); }
+  20%, 80% { transform: rotateY(-140deg); }
+  90%, 100% { transform: rotateY(0deg); }
+}
+
+@keyframes openRightCover {
+  0%, 10% { transform: rotateY(0deg); }
+  20%, 80% { transform: rotateY(140deg); }
+  90%, 100% { transform: rotateY(0deg); }
+}
+
+@keyframes flipPages {
+  0%, 30% { transform: rotateY(0deg); }
+  50% { transform: rotateY(-15deg); }
+  70%, 100% { transform: rotateY(0deg); }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .blog-content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .quran-animation {
+    margin-top: 2rem;
+  }
+}
+/* ===== Blog Cards ===== */
+.blog-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 4rem;
+}
+
+.card {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  padding: 1rem;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+}
+
+.card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.card h3 {
+  font-size: 1.3rem;
+  color: #111827;
+  margin-top: 1rem;
+  font-weight: 700;
+}
+
+.card p {
+  color: #4b5563;
+  font-size: 1rem;
+  margin: 0.5rem 0 1.2rem;
+  line-height: 1.5;
+}
+
+.read-more-btn {
+  display: inline-block;
+  background-color: #149d92;
+  color: #fff;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.read-more-btn:hover {
+  background-color: #0f7f76;
+}
+.blog-post-page img {
+  border: 3px solid #e2e8f0;
+}
+
+.blog-post-page .prose {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Main heading for blog posts (green color) */
+.blog-main-heading {
+  color: #0f7f76; /* Green color code */
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+/* Small Hadiths or important quotes (red color) */
+.blog-hadith {
+  color: #dc3545; /* Red color code */
+  font-weight: 500;
+  font-style: italic;
+  margin: 1rem 0;
+}
+
+/* Headings for other blog posts (lavender color) */
+.blog-section-heading {
+  color: #840492; /* Lavender */
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.card-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 10px;
+  font-size: 0.9rem;
+  color: #777;
+}
+
+.meta-admin {
+  color: #0f7f76;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.meta-admin:hover {
+  text-decoration: underline;
+}
+
+.meta-category,
+.meta-date {
+  color: #555;
+}
+
+.green-dot {
+  color: #0f7f76;
+  font-weight: bold;
+}
+
+.card-title {
+  color: #0f7f76;
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-top: 10px;
+}

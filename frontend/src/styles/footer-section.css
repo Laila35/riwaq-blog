@@ -1,0 +1,234 @@
+.footer-section {
+  background-image: url('/images/pic4.png');
+  background-size: cover;
+  background-position: center;
+  color: rgb(246, 244, 244);
+  padding: 80px 0;
+}
+
+.footer-overlay {
+  background-color: rgba(0, 0, 0, 0.389);
+  padding: 60px 40px;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+}
+
+.footer-column {
+  flex: 1;
+  min-width: 220px;
+}
+
+.footer-column h3 {
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #0f7f76;
+  display: inline-block;
+  padding-bottom: 4px;
+}
+
+.footer-column ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-column li {
+  margin-bottom: 10px;
+}
+
+.footer-column button {
+  background: none;
+  border: none;
+  color: rgb(255, 252, 252);
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.footer-column button:hover {
+  color: #0f7f76;
+}
+
+/* Form Section */
+.footer-form {
+  background-color: #080808;
+  padding: 25px;
+  border-radius: 10px;
+  border: 1px solid #333;
+  flex: 1.2;
+  min-width: 280px;
+}
+
+.footer-form h3 {
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #0f7f76;;
+  display: inline-block;
+  padding-bottom: 4px;
+}
+
+.footer-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.footer-form input,
+.footer-form select,
+.footer-form textarea {
+  width: 89%;
+  padding: 10px;
+  border-radius: 6px;
+  background: transparent;
+  border: 1px solid #555;
+  color: rgb(253, 251, 251);
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.footer-form input:hover,
+.footer-form select:hover,
+.footer-form textarea:hover,
+.footer-form input:focus,
+.footer-form select:focus,
+.footer-form textarea:focus {
+  border-color: #0f7f76;;
+  box-shadow: 0 0 6px #0f7f76;;
+  outline: none;
+}
+
+.form-phone {
+  display: flex;
+  gap: 8px;
+}
+
+.footer-form button {
+  background-color: #0f7f76;;
+  color: rgb(15, 15, 15);
+  padding: 10px 0;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  transition: background-color 0.3s, transform 0.3s;
+  cursor: pointer;
+}
+
+.footer-form button:hover {
+  background-color: #0f7f76;;
+  transform: scale(1.05);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .footer-container {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+/* === COPYRIGHT FOOTER SECTION === */
+.footer-bottom {
+  background-color: #ffffff;
+  color: #004b35;
+  border-top: 1px solid #ccc;
+  padding: 25px 40px;
+  position: relative;
+}
+
+.footer-bottom-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Centered text block */
+.footer-text {
+  text-align: center;
+  flex: 1;
+}
+
+.footer-text p {
+  margin: 5px 0;
+  font-size: 14px;
+  color: #004b35;
+}
+
+.footer-text strong {
+  font-weight: 700;
+  color: #004b35;
+}
+
+.footer-subtext {
+  font-weight: 600;
+  color: #003322;
+}
+
+/* Logo aligned to left corner */
+.footer-logo {
+  position: absolute;
+  left: 40px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* Bigger logo with smooth hover */
+.footer-logo img {
+  height: 80px;       /* Increased from 50px */
+  width: auto;
+  transition: transform 0.3s ease;
+}
+
+.footer-logo img:hover {
+  transform: scale(1.1);
+}
+/* Add these styles to your footer-section.css */
+
+.input-with-icon, .textarea-with-icon {
+  position: relative;
+  width: 80%;
+  margin-bottom: 1rem;
+}
+
+.input-icon, .textarea-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+}
+
+.textarea-icon {
+  top: 20px;
+  transform: none;
+}
+
+.input-with-icon input, .textarea-with-icon textarea {
+  padding-left: 40px;
+  width: 98%;
+}
+
+.country-code-select {
+  width: 98%;
+}
+
+.form-phone {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 1rem;
+}
+
+.form-phone select {
+  flex: 0.23;
+}
+
+.form-phone input {
+  flex: 0.7;
+}

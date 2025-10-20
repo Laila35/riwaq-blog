@@ -1,0 +1,116 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id       String    @id @default(auto()) @map("_id") @db.ObjectId
+  email    String    @unique
+  name     String?
+  username String    @unique
+  password String
+  role     Role      @default(AUTHOR)
+  posts    Post[]
+  likes    Like[]
+  comments Comment[]
+}
+
+model Post {
+  id              String     @id @default(auto()) @map("_id") @db.ObjectId
+  title           String
+  slug            String     @unique
+  content         String
+  excerpt         String?
+  authorId        String     @db.ObjectId
+  author          User       @relation(fields: [authorId], references: [id])
+  metaTitle       String?
+  metaDescription String?
+  metaKeywords    String[]
+  readingTime     Int?
+  publishedAt     DateTime?
+  status          PostStatus @default(DRAFT)
+  featuredImage   String?
+  likes           Like[]
+  comments        Comment[]
+  createdAt       DateTime   @default(now())
+
+  // ✅ Explicit many-to-many relations via link models
+  categoriesLinks PostCategory[]
+  tagsLinks       PostTag[]
+}
+
+model Category {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  name        String
+  slug        String   @unique
+  description String?
+  color       String?  @default("#3B82F6")
+  createdAt   DateTime @default(now())
+
+  postsLinks PostCategory[]
+}
+
+model Tag {
+  id         String    @id @default(auto()) @map("_id") @db.ObjectId
+  name       String
+  slug       String    @unique
+  postsLinks PostTag[]
+}
+
+model PostCategory {
+  id         String @id @default(auto()) @map("_id") @db.ObjectId
+  postId     String @db.ObjectId
+  categoryId String @db.ObjectId
+
+  post     Post     @relation(fields: [postId], references: [id])
+  category Category @relation(fields: [categoryId], references: [id])
+}
+
+model PostTag {
+  id     String @id @default(auto()) @map("_id") @db.ObjectId
+  postId String @db.ObjectId
+  tagId  String @db.ObjectId
+
+  post Post @relation(fields: [postId], references: [id])
+  tag  Tag  @relation(fields: [tagId], references: [id])
+}
+
+model Like {
+  id     String @id @default(auto()) @map("_id") @db.ObjectId
+  userId String @db.ObjectId
+  postId String @db.ObjectId
+  user   User   @relation(fields: [userId], references: [id])
+  post   Post   @relation(fields: [postId], references: [id])
+}
+
+model Comment {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  content   String
+  postId    String   @db.ObjectId
+  authorId  String   @db.ObjectId
+  post      Post     @relation(fields: [postId], references: [id])
+  author    User     @relation(fields: [authorId], references: [id])
+  createdAt DateTime @default(now())
+}
+
+enum Role {
+  ADMIN
+  AUTHOR
+  EDITOR
+}
+
+enum PostStatus {
+  DRAFT
+  PUBLISHED
+  ARCHIVED
+}
